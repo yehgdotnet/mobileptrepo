@@ -1,0 +1,25 @@
+// https://codeshare.frida.re/@dki/ios10-ssl-bypass/
+// $ frida --codeshare dki/ios10-ssl-bypass -f YOUR_BINARY
+
+// translation of https://github.com/nabla-c0d3/ssl-kill-switch2/blob/master/SSLKillSwitch/SSLKillSwitch.m for iOS 10
+
+/* OSStatus tls_helper_create_peer_trust(tls_handshake_t hdsk, bool server, SecTrustRef *trustRef); */
+var tls_helper_create_peer_trust = new NativeFunction(
+    Module.findExportByName(null, "tls_helper_create_peer_trust"),
+    'int', ['pointer', 'bool', 'pointer']
+);
+
+var errSecSuccess = 0;
+
+function bypassSSL() {
+    Interceptor.replace(tls_helper_create_peer_trust, new NativeCallback(function(hdsk, server, trustRef) {
+        return errSecSuccess;
+    }, 'int', ['pointer', 'bool', 'pointer']));
+    console.log("SSL certificate validation bypass active");
+}
+
+function revertSSL() {
+    Interceptor.revert(tls_helper_create_peer_trust);
+    console.log("SSL certificate validation bypass disabled");
+}
+
