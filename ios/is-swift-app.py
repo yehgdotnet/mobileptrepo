@@ -4,6 +4,7 @@
 
 # requires python 3, nm, otool
 # decryped ipa file as 1st argument 
+# demo: https://asciinema.org/a/UWKf3da1ZU2wcIl5XmSDOJBJu
 
 import argparse
 import subprocess
