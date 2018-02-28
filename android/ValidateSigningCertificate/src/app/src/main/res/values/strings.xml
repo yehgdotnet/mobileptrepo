@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ValidateSigningCertificate</string>
+    <string name="hello_world"></string>
+    <string name="signature_good">Good signature!</string>
+    <string name="signature_bad">Bad signature!</string>
+    <string name="signature_checking">Checking signature...</string>
+
+    <string name="action_settings">Settings</string>
+
+</resources>

