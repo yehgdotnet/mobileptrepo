@@ -9,6 +9,32 @@ dd if=backup.ab bs=24 skip=1 | openssl zlib -d > backup.tar
 Code:
 dd if=backup.ab bs=24 count=1 of=backup-topack.ab ; openssl zlib -in backup-topack.tar >> backup-topack.ab
 
+--------------------
 
+
+ 
+# Openssl on mac is compiled without zlib support. Alternative method described in this article works on my Yosemite:
+ 
+dd if=backup.ab bs=1 skip=24 | python -c "import zlib,sys;sys.stdout.write(zlib.decompress(sys.stdin.read()))" | tar -xvf -
+# Optionaly, if you just want to convert it into tar archive:
+ 
+dd if=backup.ab bs=1 skip=24 | python -c "import zlib,sys;sys.stdout.write(zlib.decompress(sys.stdin.read()))" > backup.tar
+# It skips first 24 bytes of Android header and then uncompresses zlib data.
+ 
+# Or Just fix openssl with zlib
+Get latest version from OpenSSL Official Repo.
+ 
+$ wget https://www.openssl.org/source/openssl-1.1.1-pre2.tar.gz
+$ tar -zxvf openssl-1.1.1-pre2.tar.gz
+$ cd openssl-1.1.0e
+# Configure OpenSSL with zlib support
+ 
+$ ./config zlib
+$ make
+$ sudo make install
+Happy days
+ 
+$ which openssl
+/usr/local/bin/openssl
 
 
