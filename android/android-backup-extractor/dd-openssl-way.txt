@@ -1,0 +1,14 @@
+source: https://forum.xda-developers.com/showthread.php?t=2011811
+
+Note: if the backup is not encrypted zlib can be used instead for both unpack and pack the ab archive: 
+- Quick unpacking:
+Code:
+dd if=backup.ab bs=24 skip=1 | openssl zlib -d > backup.tar
+
+- Quick packing: 
+Code:
+dd if=backup.ab bs=24 count=1 of=backup-topack.ab ; openssl zlib -in backup-topack.tar >> backup-topack.ab
+
+
+
+
