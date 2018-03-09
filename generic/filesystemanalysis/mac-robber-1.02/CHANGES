@@ -1,0 +1,9 @@
+-- 1.02
+Feb 12, 2010: Fixed bug in previous update that missed a newline in header.
+Feb 12. 2010: Added linux target to Makefile to support large file sizes. 
+-- 1.01
+Feb 12, 2010: Updated output format to reflect new format required by mactime.
+-- 1.00 
+Mar 31, 2003: Changed documents to sleuthkit.org addresses for Source 
+  Forge release.  
+Jan 29, 2002: Initial public release
