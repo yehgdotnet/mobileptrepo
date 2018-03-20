@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+itnl --iport 22 --lport 2222 > /dev/null 2>&i &
+sleep 3
+ssh -p 2222 root@localhost
+killall itnl
+
